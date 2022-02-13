@@ -88,23 +88,24 @@ namespace Memory.Models
             Columns = columns;
 
             Tiles = new List<Tile>();
+            PreviewingTiles = new List<Tile>();
 
             for (int i = 0; i < Rows; i++)
             {
-                for (int j = 0; j < columns ; j++)
+                for (int j = 0; j < columns; j++)
                 {
-                    Tiles.Add(new Tile(i, j));
+                    Tiles.Add(new Tile(i, j, this));
                 }
             }
 
             AssignMemoryCards();
 
-            //State = 
+            State = new BoardNoPreviewState(this);
         }
 
         private void AssignMemoryCards()
         {
-            for (int i = 0; i < Tiles.Count-1; i++)
+            for (int i = 0; i < Tiles.Count - 1; i++)
             {
                 Tiles[i].MemoryCardId = i;
             }

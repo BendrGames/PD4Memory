@@ -15,25 +15,27 @@ public class MemoryGame : MonoBehaviour
     {
         _board = new MemoryBoard(3, 3);
 
-        int randomtile = Random.Range(0, _board.Tiles.Count);
-        _board.Tiles[randomtile].PropertyChanged += (s,e) =>
-        {
-            Debug.Log(_board.Tiles[randomtile].ToString());
-            Debug.Log(e.PropertyName);
-        };
+        //foreach (var item in _board.Tiles)
+        //{
+        //    item.PropertyChanged += (s, e) =>
+        //    {
+        //        item.OnPropertyChanged();
+        //    };
+        //}
+      
 
-        InvokeRepeating("IncreasteTileID", 2, 2);
+        //InvokeRepeating("IncreasteTileID", 2, 2);
 
         
         _memoryBoard.SetUpMemoryBoardView(_board, _tilePrefab);
     }
 
 
-    private void IncreasteTileID()
-    {
-        foreach (var tile in _board.Tiles)
-        {
-            tile.MemoryCardId++;
-        }
-    }
+    //private void IncreasteTileID()
+    //{
+    //    foreach (var tile in _board.Tiles)
+    //    {
+    //        tile.MemoryCardId++;
+    //    }
+    //}
 }

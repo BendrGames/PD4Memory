@@ -43,6 +43,18 @@ namespace Memory.Models
             }
         }
 
+        private MemoryBoard _memoryBoard;
+        public MemoryBoard MemoryBoard
+        {
+            get { return _memoryBoard; }
+            set
+            {
+                if (_memoryBoard == value) return;
+                _memoryBoard = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ITileState _state;
 
         public ITileState State
@@ -56,10 +68,11 @@ namespace Memory.Models
             }
         }
 
-        public Tile(int row, int column)
+        public Tile(int row, int column, MemoryBoard memoryBoard)
         {
             Row = row;
             Column = column;
+            MemoryBoard = memoryBoard;
 
             State = new TileHiddenState(this);
         }

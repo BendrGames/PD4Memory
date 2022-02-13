@@ -16,7 +16,7 @@ namespace Memory.Models.States
 
         public override void AddPreview(Tile tile)
         {
-            if (tile.State.State == TileStates.Hidden)
+            if (tile.State.State != TileStates.Hidden)
                 return;
             tile.State = new TilePreviewState(tile);
             Board.PreviewingTiles.Add(tile);
