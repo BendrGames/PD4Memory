@@ -107,7 +107,7 @@ namespace Memory.Models
         {
             for (int i = 0; i < Tiles.Count - 1; i++)
             {
-                Tiles[i].MemoryCardId = i;
+                Tiles[i].MemoryCardId = i % 2;
             }
         }
 

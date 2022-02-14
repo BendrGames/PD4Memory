@@ -38,7 +38,7 @@ namespace Memory.Models.States
 
         public override void TileAnimationEnd(Tile tile)
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

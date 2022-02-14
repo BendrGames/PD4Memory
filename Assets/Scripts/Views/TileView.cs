@@ -19,6 +19,8 @@ namespace Memory.Views
         public void OnPointerDown(PointerEventData eventData)
         {
             Model.MemoryBoard.State.AddPreview(Model);
+            Debug.Log(Model.MemoryCardId);
+           
         }
 
         protected override void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -37,8 +39,7 @@ namespace Memory.Views
             }
             else
             {
-                _animator.Play("Shown");
-            }
+                _animator.Play("Shown");            }
 
         }
 
@@ -71,11 +72,12 @@ namespace Memory.Views
 
         public void AnimationStartHandler(string name)
         {
-            Debug.Log($"{name} animation start.");
+            //Debug.Log($"{name} animation start.");
         }
         public void AnimationCompleteHandler(string name)
         {
-            Debug.Log($"{name} animation complete.");
+            //Debug.Log($"{name} animation complete.");
+            Model.MemoryBoard.State.TileAnimationEnd(Model);
 
         }
     }
