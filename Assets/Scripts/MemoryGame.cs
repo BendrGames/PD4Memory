@@ -11,31 +11,27 @@ public class MemoryGame : MonoBehaviour
     [SerializeField] private GameObject _tilePrefab;
     [SerializeField] private MemoryBoardView _memoryBoard;
 
+    private PlayerModel _player1Model;
+    private PlayerModel _player2Model;
+
+    [SerializeField] private PlayerView _player1View;
+    [SerializeField] private PlayerView _player2View;
+
+    [SerializeField] private Material[] materials = new Material[5];
+
     private void Start()
     {
-        _board = new MemoryBoard(3, 3);
-
-        //foreach (var item in _board.Tiles)
-        //{
-        //    item.PropertyChanged += (s, e) =>
-        //    {
-        //        item.OnPropertyChanged();
-        //    };
-        //}
-      
-
-        //InvokeRepeating("IncreasteTileID", 2, 2);
+        _player1Model = new PlayerModel("Player1", true);
+        _player2Model = new PlayerModel("Player2", false);
+        _board = new MemoryBoard(3, 3, _player1Model, _player2Model);
 
         
-        _memoryBoard.SetUpMemoryBoardView(_board, _tilePrefab);
+
+        _memoryBoard.SetUpMemoryBoardView(_board, _tilePrefab, materials, _player1View, _player2View);
+        
+
     }
 
 
-    //private void IncreasteTileID()
-    //{
-    //    foreach (var tile in _board.Tiles)
-    //    {
-    //        tile.MemoryCardId++;
-    //    }
-    //}
+
 }

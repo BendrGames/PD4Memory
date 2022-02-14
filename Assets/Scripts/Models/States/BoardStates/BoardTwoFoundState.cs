@@ -22,6 +22,8 @@ namespace Memory.Models.States
         public override void TileAnimationEnd(Tile tile)
         {
             Board.PreviewingTiles.Remove(tile);
+            Board.PreviewingTiles.RemoveAt(0);
+            
 
             if (Board.PreviewingTiles.Count == 0)
             {

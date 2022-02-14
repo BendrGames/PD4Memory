@@ -82,10 +82,37 @@ namespace Memory.Models
             }
         }
 
-        public MemoryBoard(int rows, int columns)
+
+        private PlayerModel _playermodel1;
+        public PlayerModel Playermodel1
+        {
+            get { return _playermodel1; }
+            set
+            {
+                if (_playermodel1 == value) return;
+                _playermodel1 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private PlayerModel _playermodel2;
+        public PlayerModel Playermodel2
+        {
+            get { return _playermodel2; }
+            set
+            {
+                if (_playermodel2 == value) return;
+                _playermodel2 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public MemoryBoard(int rows, int columns, PlayerModel player1, PlayerModel player2)
         {
             Rows = rows;
             Columns = columns;
+            Playermodel1 = player1;
+            Playermodel2 = player2;
 
             Tiles = new List<Tile>();
             PreviewingTiles = new List<Tile>();
@@ -103,11 +130,13 @@ namespace Memory.Models
             State = new BoardNoPreviewState(this);
         }
 
+
         private void AssignMemoryCards()
         {
             for (int i = 0; i < Tiles.Count - 1; i++)
             {
-                Tiles[i].MemoryCardId = i % 2;
+                Tiles[i].MemoryCardId = i / 2;
+                
             }
         }
 
