@@ -10,9 +10,13 @@ namespace Memory.Models.States
     {
         public BoardNoPreviewState(MemoryBoard board) : base(board)
         {
+            board.Playermodel1.IsActive = !board.Playermodel1.IsActive;
+            board.Playermodel2.IsActive = !board.Playermodel2.IsActive;
         }
 
         public override BoardStates State => BoardStates.NoPreview;
+
+        
 
         public override void AddPreview(Tile tile)
         {

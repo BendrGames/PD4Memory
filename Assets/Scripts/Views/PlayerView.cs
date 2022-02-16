@@ -19,7 +19,6 @@ namespace Memory.Views
         public PlayerView()
         {
 
-            
 
         }
 
@@ -42,8 +41,16 @@ namespace Memory.Views
             }
             if (e.PropertyName.Equals(nameof(Model.Elapsed)))
             {
-                _scoreText.text = Model.Elapsed.ToString();
+                _ElapsedTime.text = Model.Elapsed.ToString();
             }
         }
+
+        private void Update()
+        {
+            if (Model.IsActive)
+                Model.Elapsed += Time.deltaTime;
+
+        }
+
     }
 }

@@ -114,6 +114,16 @@ namespace Memory.Models
             Playermodel1 = player1;
             Playermodel2 = player2;
 
+            Playermodel1.IsActive = true;
+            Playermodel2.IsActive = false;
+
+            Playermodel1.Score = 0;
+            Playermodel2.Score = 0;
+
+            Playermodel1.Elapsed = 0f;
+            Playermodel2.Elapsed = 0f;
+
+
             Tiles = new List<Tile>();
             PreviewingTiles = new List<Tile>();
 

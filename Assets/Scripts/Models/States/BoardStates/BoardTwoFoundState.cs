@@ -10,6 +10,18 @@ namespace Memory.Models.States
     {
         public BoardTwoFoundState(MemoryBoard board) : base(board)
         {
+
+            if (board.Playermodel1.IsActive)
+            {
+                board.Playermodel1.Score++;
+            }
+
+
+            if (board.Playermodel2.IsActive)
+            {
+                board.Playermodel2.Score++;
+            }
+
         }
 
         public override BoardStates State => BoardStates.TwoFound;

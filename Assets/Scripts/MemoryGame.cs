@@ -25,13 +25,12 @@ public class MemoryGame : MonoBehaviour
         _player2Model = new PlayerModel("Player2", false);
         _board = new MemoryBoard(3, 3, _player1Model, _player2Model);
 
-        
-
         _memoryBoard.SetUpMemoryBoardView(_board, _tilePrefab, materials, _player1View, _player2View);
-        
+
 
     }
 
+   
 
 
 }

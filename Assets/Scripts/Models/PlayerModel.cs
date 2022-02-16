@@ -47,20 +47,61 @@ namespace Memory.Models
         {
             get
             {
-                if (IsActive)
-                {
-                    return _elapsed += Time.deltaTime;
-                }
-                else
-                {
-                    return _elapsed;
-                };
+                return _elapsed;
             }
 
             set
             {
                 if (_elapsed == value) return;
                 _elapsed = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private float _mm;
+        public float Mm
+        {
+            get
+            {
+                return (int) (Elapsed / 60);
+            }
+
+            set
+            {
+                if (_mm == value) return;
+                _mm = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private float _ss;
+        public float Ss
+        {
+            get
+            {
+                return (int)(Elapsed % 60);
+            }
+
+            set
+            {
+                if (_ss == value) return;
+                _ss = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private float _ms;
+        public float Ms
+        {
+            get
+            {
+                return (int)((Elapsed % 1) * 1000);
+            }
+
+            set
+            {
+                if (_ms == value) return;
+                _ms = value;
                 OnPropertyChanged();
             }
         }
@@ -72,6 +113,7 @@ namespace Memory.Models
             IsActive = isactive;
 
         }
+
     }
 
 
