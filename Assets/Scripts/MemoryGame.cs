@@ -17,7 +17,7 @@ public class MemoryGame : MonoBehaviour
     [SerializeField] private PlayerView _player1View;
     [SerializeField] private PlayerView _player2View;
 
-    [SerializeField] private Material[] materials = new Material[5];
+    //[SerializeField] private Material[] materials = new Material[5];
 
     private void Start()
     {
@@ -25,9 +25,7 @@ public class MemoryGame : MonoBehaviour
         _player2Model = new PlayerModel("Player2", false);
         _board = new MemoryBoard(3, 3, _player1Model, _player2Model);
 
-        _memoryBoard.SetUpMemoryBoardView(_board, _tilePrefab, materials, _player1View, _player2View);
-
-
+        _memoryBoard.SetUpMemoryBoardView(_board, _tilePrefab, /*materials,*/ _player1View, _player2View);
     }
 
    

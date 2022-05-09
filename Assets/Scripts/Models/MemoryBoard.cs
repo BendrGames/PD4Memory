@@ -1,7 +1,10 @@
+using Memory.Data;
 using Memory.Models.States;
+using Memory.Scripts.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Memory.Models
@@ -135,9 +138,42 @@ namespace Memory.Models
                 }
             }
 
-            AssignMemoryCards();
+            //AssignMemoryCards();
+            AssignMemoryCardIds();
+
+            //ExtensionMethods.Shuffle(Tiles);
 
             State = new BoardNoPreviewState(this);
+        }
+
+        private void AssignMemoryCardIds()
+        {
+            ImageRepository repo = ImageRepository.Instance;
+
+            repo.ProcessImageIds(AssignMemoryCardIds);
+        }
+
+        private void AssignMemoryCardIds(List<int> memoryCardIds)
+        {
+            // List<int> memoryCardIds = Enumerable.Range(0, (Tiles.Count + 1) / 2).ToList().Shuffle();
+
+            memoryCardIds = memoryCardIds.Shuffle();
+            List<Tile> shuffledTiles = Tiles.Shuffle();
+            int memoryCardIndex = 0;
+            Boolean first = true;
+
+            foreach(Tile tile in shuffledTiles)
+            {
+                tile.MemoryCardId = memoryCardIds[memoryCardIndex];
+                if (first)
+                    first = false;
+                else
+                {
+                    memoryCardIndex++;
+                    first = true;
+                }
+            }
+
         }
 
 
@@ -145,8 +181,7 @@ namespace Memory.Models
         {
             for (int i = 0; i < Tiles.Count - 1; i++)
             {
-                Tiles[i].MemoryCardId = i / 2;
-                
+                Tiles[i].MemoryCardId = i / 2;                
             }
         }
 

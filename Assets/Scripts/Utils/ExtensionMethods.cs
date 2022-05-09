@@ -10,7 +10,7 @@ namespace Memory.Scripts.Utils
     {
         private static Random _random = new Random();
 
-        public static List<T> Suffle<T>(this List<T> original)
+        public static List<T> Shuffle<T>(this List<T> original)
         {
             List<T> shallowInputClone = new List<T>(original);
             List<T> result = new List<T>(shallowInputClone.Count);

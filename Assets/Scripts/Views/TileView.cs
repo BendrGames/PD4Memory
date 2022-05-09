@@ -1,3 +1,4 @@
+using Memory.Data;
 using Memory.Models;
 using System;
 using System.Collections;
@@ -29,6 +30,18 @@ namespace Memory.Views
             {
                 StartAnimation();
             }
+            else if (e.PropertyName.Equals(nameof(Model.MemoryCardId)))
+                LoadFront();
+        }
+
+        private void LoadFront()
+        {
+            ImageRepository.Instance.GetProcessTexture(Model.MemoryCardId, LoadFront);
+        }
+
+        private void LoadFront(Texture2D texture)
+        {
+            gameObject.transform.Find("Front").GetComponent<Renderer>().material.mainTexture = texture;
         }
 
         private void StartAnimation()
@@ -78,7 +91,6 @@ namespace Memory.Views
         {
             //Debug.Log($"{name} animation complete.");
             Model.MemoryBoard.State.TileAnimationEnd(Model);
-
         }
     }
 
